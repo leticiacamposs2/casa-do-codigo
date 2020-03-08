@@ -16,7 +16,7 @@ const TableHead = () => {
 const TableBody = props => {
     const linhas = props.autores.map((linha, index) => {
         return (
-            <tr>
+            <tr key={index}>
                 <td>{linha.nome}</td>
                 <td>{linha.livro}</td>
                 <td>{linha.preco}</td>
