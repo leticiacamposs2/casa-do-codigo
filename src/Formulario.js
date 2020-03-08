@@ -14,12 +14,17 @@ class Formulario extends Component {
     }
 
     escutadorDeInput = event => {
-        
+
         const { name, value } = event.target;
 
         this.setState({
             [name] : value
         });
+    }
+
+    submitFormulario = () => {
+        this.props.escutadorDeSubmit(this.state);
+        this.setState(this.stateInicial);
     }
 
     render() {
@@ -52,7 +57,7 @@ class Formulario extends Component {
                     value={preco}
                     onChange={this.escutadorDeInput} />
 
-                <button type="button">Salvar</button>
+                <button onClick={this.submitFormulario} type="button">Salvar</button>
             </form>
         );
     }
