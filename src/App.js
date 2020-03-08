@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Tabela from './Tabela';
+import Form from './Formulario';
 
 class App extends Component {
 
@@ -44,7 +45,10 @@ class App extends Component {
 
   render() {
     return (
-      <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
+      <div className="App">
+        <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
+        <Form />
+      </div>
     );
   }
 }
