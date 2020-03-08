@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Tabela from './Tabela';
 import './App.css';
 
-class App extends Component {
-
+function App() {
   state = {
     autores: [
       {
