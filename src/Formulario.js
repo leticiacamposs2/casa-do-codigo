@@ -13,6 +13,15 @@ class Formulario extends Component {
         this.state = this.stateInicial;
     }
 
+    escutadorDeInput = event => {
+        
+        const { name, value } = event.target;
+
+        this.setState({
+            [name] : value
+        });
+    }
+
     render() {
 
         const { nome, livro, preco } = this.state;
@@ -25,7 +34,7 @@ class Formulario extends Component {
                     type="text"
                     name="nome"
                     vale={nome}
-                />
+                    onChange={this.escutadorDeInput}/>
 
                 <label htmlFor="livro">Livro</label>
                 <input
@@ -33,7 +42,7 @@ class Formulario extends Component {
                     type="text"
                     name="livro"
                     value={livro}
-                />
+                    onChange={this.escutadorDeInput} />
 
                 <label htmlFor="preco">Preço</label>
                 <input
@@ -41,7 +50,7 @@ class Formulario extends Component {
                     type="text"
                     name="preco"
                     value={preco}
-                />
+                    onChange={this.escutadorDeInput} />
 
                 <button type="button">Salvar</button>
             </form>
