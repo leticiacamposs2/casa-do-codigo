@@ -2,9 +2,9 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import '../node_modules/materialize-css/dist/css/materialize.min.css';
 
-import Header from './Header';
-import Tabela from './Tabela';
-import Form from './Formulario';
+import Header from './components/Header';
+import Tabela from './components/Tabela';
+import Form from './components/Formulario';
 
 class App extends Component {
 
