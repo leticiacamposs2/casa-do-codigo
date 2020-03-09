@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import './App.css';
+import '../node_modules/materialize-css/dist/css/materialize.min.css';
 
 import Tabela from './Tabela';
 import Form from './Formulario';
