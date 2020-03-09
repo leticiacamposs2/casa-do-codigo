@@ -54,6 +54,7 @@ class App extends Component {
       <Fragment>
         <Header />
         <div className="container mb-10">
+          <h1>Casa do código</h1>
           <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
           <Form escutadorDeSubmit={this.escutadorDeSubmit}/>
         </div>
