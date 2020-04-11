@@ -5,6 +5,7 @@ import '../node_modules/materialize-css/dist/css/materialize.min.css';
 import Header from './components/Header';
 import Tabela from './components/Tabela';
 import Form from './components/Formulario';
+import PopUp from './components/PopUp';
 
 class App extends Component {
 
@@ -41,12 +42,15 @@ class App extends Component {
       autores: autores.filter((autor, posAtual) => {
         return posAtual !== index;
       }),
-    })
+    });
+
+    PopUp.exibeMensagem("error", "Autor removido com sucesso")
 
   }
 
   escutadorDeSubmit = autor => {
     this.setState({ autores:[...this.state.autores, autor] })
+    PopUp.exibeMensagem("sucess", "Autor adicionado com sucesso")
   }
 
   render() {
