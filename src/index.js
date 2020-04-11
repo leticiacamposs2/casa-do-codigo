@@ -1,11 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import App from './App';
+import Sobre from './pages/Sobre';
+import Livros from './pages/Livros';
+import Autores from './pages/Autores';
+import NotFound from './pages/NotFound';
+import './index.css';
+
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <App />, 
+    <BrowserRouter>
+        <Switch>
+            <Route path='/' exact={true} component={App}/>
+            <Route path='/sobre' component={Sobre} />
+            <Route path='/livros' component={Livros} />
+            <Route path='/autores' component={Autores} />
+            <Route component={NotFound} />
+        </Switch>
+    </BrowserRouter>,
     document.getElementById('root')
 );
 serviceWorker.unregister();
