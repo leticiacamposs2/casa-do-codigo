@@ -7,7 +7,22 @@ import Tabela from './components/Tabela';
 import Form from './components/Formulario';
 import PopUp from './components/PopUp';
 
+import ApiService from './services/ApiService';
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      autores: [],
+    };
+  }
+
+  componentDidMount() {
+    ApiService.ListaAutores()
+      .then(res => {
+        this.setState({ autores: [...this.state.autores, ...res.data] })
+      });
+  }
 
   state = {
     autores: [
@@ -34,23 +49,27 @@ class App extends Component {
     ],
   }
 
-  removeAutor = index => {
-
+  removeAutor = id => {
     const { autores } = this.state;
 
-    this.setState({
-      autores: autores.filter((autor, posAtual) => {
-        return posAtual !== index;
-      }),
-    });
-
-    PopUp.exibeMensagem("error", "Autor removido com sucesso")
-
-  }
+    this.setState(
+      {
+        autores: autores.filter((autor) => {
+          return autor.id !== id;
+        }),
+      }
+    );
+    PopUp.exibeMensagem('error', "Autor removido com sucesso");
+    ApiService.RemoveAutor(id);
+  } 
 
   escutadorDeSubmit = autor => {
-    this.setState({ autores:[...this.state.autores, autor] })
-    PopUp.exibeMensagem("sucess", "Autor adicionado com sucesso")
+    ApiService.CriaAutor(JSON.stringify(autor))
+      .then(res => res.data)
+      .then(autor => {
+        this.setState({ autores: [...this.state.autores, autor] });
+        PopUp.exibeMensagem('success', "Autor adicionado com sucesso");
+      });
   }
 
   render() {
